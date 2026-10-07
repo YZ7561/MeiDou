@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+node_modules_pnpm_backup_*/
+
+# Build output
+out/
+dist/
+release/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Local runtime data (chat history, memory, encrypted secrets, RAG index)
+.meidou-local-staging/
+*.local
+.env
+.env.*
+
+# TTS lab: third-party model artifacts, Python venv, generated audio — not for distribution
+tts-lab/
+
+# Editor / IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp / backup / coverage
+*.tmp
+*.bak
+coverage/

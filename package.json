@@ -1,0 +1,53 @@
+{
+  "name": "meidou",
+  "version": "0.1.0",
+  "description": "MeiDou V1 virtual desktop pet built with Electron, Vue 3 and Vite.",
+  "main": "out/main/index.js",
+  "private": true,
+  "packageManager": "pnpm@9",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "vue-tsc --noEmit && electron-vite build",
+    "update:local": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/update-local.ps1",
+    "package": "pnpm build && electron-builder",
+    "package:prepackaged": "pnpm update:local && electron-builder --win nsis --prepackaged release/MeiDou-local"
+  },
+  "dependencies": {
+    "dompurify": "^3.4.15",
+    "mammoth": "^1.12.1",
+    "marked": "^18.0.11",
+    "pdfjs-dist": "3.11.174",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "electron": "^33.3.1",
+    "electron-builder": "^25.1.8",
+    "electron-vite": "^2.3.0",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11",
+    "vue-tsc": "^2.2.0"
+  },
+  "build": {
+    "appId": "com.meidou.pet",
+    "productName": "MeiDou",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": "always",
+      "createStartMenuShortcut": true,
+      "shortcutName": "MeiDou"
+    }
+  }
+}
